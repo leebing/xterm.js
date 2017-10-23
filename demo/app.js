@@ -8,7 +8,14 @@ var terminals = {},
     logs = {};
 
 app.use('/build', express.static(__dirname + '/../build'));
-
+app.all('*', function (req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+   res.header("X-Powered-By", 'NewEpoch-WebShell-1.0.0')
+   res.header("Content-Type", "text/html; charset=utf-8");
+   next();
+});
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
