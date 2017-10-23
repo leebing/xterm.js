@@ -14,6 +14,6 @@ RUN npm install
 
 # Add the code
 COPY . /usr/src/app
-
+EXPOSE 3000
 # Run the tests and build, to make sure everything is working nicely
 RUN npm run build && npm run test
